@@ -20,6 +20,12 @@ class TasksList extends StatelessWidget {
             checkBoxCallback:(bool? checkboxState){
               taskData.updateTask(task);
             },
+            longPressCallback: (){
+              taskData.deleteTask(task);
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('Task "${task.name!}" deleted'),
+              ));
+            },
           );
         }, itemCount: taskData.taskCount,
         );
